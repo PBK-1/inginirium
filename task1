@@ -1,0 +1,36 @@
+from tkinter import *
+from random import *
+
+figr = [0, 1, 2]
+colr = ['gold', 'dodger blue', 'yellow', 'SlateBlue1', 'hotpink', 'red', 'green2']
+
+def click():
+    canvas.delete('all')
+    fi = choice(figr)
+    x = randint(0, 600)
+    y = randint(0, 400)
+    x1 = randint(0, 600)
+    y1 = randint(0, 400)
+    x2 = randint(0, 600)
+    y2 = randint(0, 400)
+    if fi == 0:
+        canvas.create_rectangle( x, y, x1, y1, fill = choice(colr))
+    elif fi == 1:
+        canvas.create_oval(x, y, x1, y1, fill = choice(colr))
+    else:
+        canvas.create_polygon(x, y, x1, y1, x2, y2, fill = choice(colr))
+
+
+window = Tk()
+
+canvas = Canvas(
+    width = 600,
+    height = 400,
+    background = 'white'
+)
+canvas.pack()
+
+button = Button(text = 'сгенерировать', command = click)
+button.pack()
+
+window.mainloop()
