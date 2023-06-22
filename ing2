@@ -1,0 +1,20 @@
+import kivy
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
+class MyApp(App):
+def build(self):
+layout = BoxLayout(orientation='vertical')
+number1 = TextInput(multiline=False)
+number2 = TextInput(multiline=False)
+sum_button = Button(text='Сложить')
+result_label = Label()
+sum_button.bind(on_press=lambda instance: setattr(result_label, 'text', str(float(number1.text) + float(number2.text))))
+layout.add_widget(number1)
+layout.add_widget(number2)
+layout.add_widget(sum_button)
+layout.add_widget(result_label)
+return layout
+MyApp().run()
